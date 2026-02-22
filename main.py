@@ -7,7 +7,6 @@ from pydantic import BaseModel, Field
 from ml.data import apply_label, process_data
 from ml.model import inference, load_model
 
-# DO NOT MODIFY
 class Data(BaseModel):
     age: int = Field(..., example=37)
     workclass: str = Field(..., example="Private")
@@ -28,28 +27,28 @@ class Data(BaseModel):
 
 project_path = os.path.dirname(os.path.abspath(__file__))
 
-path = os.path.join(project_path, "model", "encoder.pkl") # TODO: enter the path for the saved encoder
+path = os.path.join(project_path, "model", "encoder.pkl") # Path for the saved encoder
 encoder = load_model(path)
 
-path = os.path.join(project_path, "model", "model.pkl") # TODO: enter the path for the saved model
+path = os.path.join(project_path, "model", "model.pkl") # Path for the saved model
 model = load_model(path)
 
-# TODO: create a RESTful API using FastAPI
+# Create a RESTful API using FastAPI
 app = FastAPI()
 
-# TODO: create a GET on the root giving a welcome message
+# Create a GET on the root giving a welcome message
 @app.get("/")
 async def get_root():
     """ Say hello!"""
     return {"greeting": "Welcome to the ML inference API!"}
 
 
-# TODO: create a POST on a different path that does model inference
+# Create a POST on a different path that does model inference
 @app.post("/data/")
 async def post_inference(data: Data):
-    # DO NOT MODIFY: turn the Pydantic model into a dict.
+    # Turn the Pydantic model into a dict.
     data_dict = data.dict()
-    # DO NOT MODIFY: clean up the dict to turn it into a Pandas DataFrame.
+    # Clean up the dict to turn it into a Pandas DataFrame.
     # The data has names with hyphens and Python does not allow those as variable names.
     # Here it uses the functionality of FastAPI/Pydantic/etc to deal with this.
     data = {k.replace("_", "-"): [v] for k, v in data_dict.items()}

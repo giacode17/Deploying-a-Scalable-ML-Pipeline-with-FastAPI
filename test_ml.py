@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.model_selection import train_test_split
-# TODO: add necessary import
+
 from ml.data import process_data
 from ml.model import train_model, compute_model_metrics, inference
 
@@ -37,7 +37,7 @@ X_test, y_test, _, _ = process_data(
 model = train_model(X_train, y_train)
 
 
-# TODO: implement the first test. Change the function name and input as needed
+# The first test. 
 def test_model_type():
     """
     # Test that train_model returns a GradientBoostingClassifier.
@@ -45,7 +45,7 @@ def test_model_type():
     assert isinstance(model, GradientBoostingClassifier)
 
 
-# TODO: implement the second test. Change the function name and input as needed
+# The second test. 
 def test_compute_model_metrics():
     """
     # Test that compute_model_metrics returns expected values for known inputs.
@@ -61,7 +61,7 @@ def test_compute_model_metrics():
     assert fbeta == pytest.approx(0.8, abs=0.01)
 
 
-# TODO: implement the third test. Change the function name and input as needed
+# The third test. 
 def test_inference_return_type():
     """
     # Test that inference returns a numpy array with the correct size.
